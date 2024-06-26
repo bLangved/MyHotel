@@ -1,0 +1,146 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "category": "single",
+      "roomNumber": 101,
+      "isAvailable": false,
+      "price": 800,
+      "bookings": [
+        {
+          "customer": "John Doe",
+          "startDate": "2024-07-01",
+          "endDate": "2024-07-03"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "single",
+      "roomNumber": 102,
+      "isAvailable": true,
+      "price": 800,
+      "bookings": []
+    },
+    {
+      "id": 3,
+      "category": "single",
+      "roomNumber": 103,
+      "isAvailable": false,
+      "price": 900,
+      "bookings": [
+        {
+          "customer": "Alice Johnson",
+          "startDate": "2024-07-05",
+          "endDate": "2024-07-08"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "single",
+      "roomNumber": 104,
+      "isAvailable": true,
+      "price": 900,
+      "bookings": []
+    },
+    {
+      "id": 5,
+      "category": "single",
+      "roomNumber": 105,
+      "isAvailable": false,
+      "price": 800,
+      "bookings": [
+        {
+          "customer": "Charlie Green",
+          "startDate": "2024-07-10",
+          "endDate": "2024-07-12"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "single",
+      "roomNumber": 106,
+      "isAvailable": true,
+      "price": 900,
+      "bookings": []
+    },
+    {
+      "id": 7,
+      "category": "single",
+      "roomNumber": 107,
+      "isAvailable": true,
+      "price": 800,
+      "bookings": []
+    },
+    {
+      "id": 8,
+      "category": "double",
+      "roomNumber": 201,
+      "isAvailable": false,
+      "price": 1200,
+      "bookings": [
+        {
+          "customer": "Bob Brown",
+          "startDate": "2024-07-02",
+          "endDate": "2024-07-04"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "double",
+      "roomNumber": 202,
+      "isAvailable": true,
+      "price": 1200,
+      "bookings": []
+    },
+    {
+      "id": 10,
+      "category": "double",
+      "roomNumber": 203,
+      "isAvailable": false,
+      "price": 1300,
+      "bookings": [
+        {
+          "customer": "Dave Smith",
+          "startDate": "2024-07-08",
+          "endDate": "2024-07-10"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "category": "double",
+      "roomNumber": 204,
+      "isAvailable": true,
+      "price": 1300,
+      "bookings": []
+    },
+    {
+      "id": 12,
+      "category": "double",
+      "roomNumber": 205,
+      "isAvailable": true,
+      "price": 1200,
+      "bookings": []
+    },
+    {
+      "id": 13,
+      "category": "double",
+      "roomNumber": 206,
+      "isAvailable": true,
+      "price": 1300,
+      "bookings": []
+    },
+    {
+      "id": 14,
+      "category": "double",
+      "roomNumber": 207,
+      "isAvailable": true,
+      "price": 1200,
+      "bookings": []
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+body {
+  @apply bg-gray-800 items-center grid items-center min-h-screen m-0 p-0;
+}
+
+main {
+  max-width: 1000px;
+  min-height: 800px;
+  width: 100%;
+  @apply rounded-md bg-gray-100 p-3 w-full h-full mx-auto;
+}
