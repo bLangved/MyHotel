@@ -52,7 +52,7 @@ const RoomList = () => {
   };
 
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col relative pb-3">
       <div className="text-center mt-10">
         <h1 className="text-4xl font-semibold">MyHotel</h1>
         <p className="text-xl">Booking system</p>
