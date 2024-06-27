@@ -141,6 +141,150 @@
       "isAvailable": true,
       "price": 1200,
       "bookings": []
+    },
+    {
+      "id": 15,
+      "category": "single",
+      "roomNumber": 108,
+      "isAvailable": false,
+      "price": 800,
+      "bookings": [
+        {
+          "customer": "Eva White",
+          "startDate": "2024-07-06",
+          "endDate": "2024-07-08"
+        },
+        {
+          "customer": "Frank Black",
+          "startDate": "2024-07-15",
+          "endDate": "2024-07-17"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "category": "single",
+      "roomNumber": 109,
+      "isAvailable": true,
+      "price": 900,
+      "bookings": []
+    },
+    {
+      "id": 17,
+      "category": "single",
+      "roomNumber": 110,
+      "isAvailable": false,
+      "price": 800,
+      "bookings": [
+        {
+          "customer": "Grace Lee",
+          "startDate": "2024-07-12",
+          "endDate": "2024-07-14"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "category": "single",
+      "roomNumber": 111,
+      "isAvailable": true,
+      "price": 900,
+      "bookings": []
+    },
+    {
+      "id": 19,
+      "category": "double",
+      "roomNumber": 208,
+      "isAvailable": false,
+      "price": 1200,
+      "bookings": [
+        {
+          "customer": "Helen Clark",
+          "startDate": "2024-07-03",
+          "endDate": "2024-07-05"
+        },
+        {
+          "customer": "Ivy Adams",
+          "startDate": "2024-07-20",
+          "endDate": "2024-07-22"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "category": "double",
+      "roomNumber": 209,
+      "isAvailable": true,
+      "price": 1300,
+      "bookings": []
+    },
+    {
+      "id": 21,
+      "category": "double",
+      "roomNumber": 210,
+      "isAvailable": true,
+      "price": 1300,
+      "bookings": []
+    },
+    {
+      "id": 22,
+      "category": "double",
+      "roomNumber": 211,
+      "isAvailable": false,
+      "price": 1200,
+      "bookings": [
+        {
+          "customer": "Jack King",
+          "startDate": "2024-07-18",
+          "endDate": "2024-07-20"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "category": "double",
+      "roomNumber": 212,
+      "isAvailable": false,
+      "price": 1300,
+      "bookings": [
+        {
+          "customer": "Karen Taylor",
+          "startDate": "2024-07-08",
+          "endDate": "2024-07-11"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "category": "double",
+      "roomNumber": 213,
+      "isAvailable": true,
+      "price": 1200,
+      "bookings": []
+    },
+    {
+      "id": 25,
+      "category": "double",
+      "roomNumber": 214,
+      "isAvailable": false,
+      "price": 1300,
+      "bookings": [
+        {
+          "customer": "Laura Bell",
+          "startDate": "2024-07-05",
+          "endDate": "2024-07-07"
+        },
+        {
+          "customer": "Mike Green",
+          "startDate": "2024-07-15",
+          "endDate": "2024-07-17"
+        },
+        {
+          "customer": "Nina Brown",
+          "startDate": "2024-07-25",
+          "endDate": "2024-07-27"
+        }
+      ]
     }
   ]
 }

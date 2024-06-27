@@ -1,3 +1,3 @@
 export { default as Home } from "./Home";
-export { default as Room } from "./Room";
+export { default as Booking } from "./Booking";
 export { default as RouteNotFound } from "./RouteNotFound";

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useRooms from "../../../hooks/useRooms";
+import RoomDetails from "./RoomDetails";
 
 const RoomList = () => {
   const { rooms, loading, error } = useRooms("/data/rooms.json");
   const [selectedRoomType, setSelectedRoomType] = useState("All rooms");
   const [selectedRoomAvailability, setSelectedRoomAvailability] =
     useState("All availability");
+  const [bookingDetails, setBookingDetails] = useState(null);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -42,34 +44,44 @@ const RoomList = () => {
 
   const filteredRooms = filterRooms();
 
+  const showBookingDetails = (roomData) => {
+    setBookingDetails(roomData);
+  };
+  const hideBookingDetails = () => {
+    setBookingDetails(null);
+  };
+
   return (
-    <div className="flex flex-col">
-      <header className="my-10 flex flex-col">
-        <div className="flex gap-5 mb-5">
-          <select
-            name="roomType"
-            id="roomType"
-            onChange={handleRoomTypeChange}
-            className="p-2 w-full max-w-sm h-10 rounded-md mx-auto bg-white"
-          >
-            <option value="All rooms">All rooms</option>
-            <option value="single">Single rooms</option>
-            <option value="double">Double rooms</option>
-          </select>
-          <select
-            name="roomAvailability"
-            id="roomAvailability"
-            onChange={handleRoomAvailabilityChange}
-            className="p-2 w-full max-w-sm h-10 rounded-md mx-auto bg-white "
-          >
-            <option value="All availability">All availability</option>
-            <option value="isAvailable">Available</option>
-            <option value="isNotAvailable">Not available</option>
-          </select>
-        </div>
+    <div className="flex flex-col relative">
+      <div className="text-center mt-10">
+        <h1 className="text-4xl font-semibold">MyHotel</h1>
+        <p className="text-xl">Booking system</p>
+      </div>
+      <header className="my-10 flex flex-col gap-3 mx-auto w-52">
+        <select
+          name="roomType"
+          id="roomType"
+          onChange={handleRoomTypeChange}
+          className="p-2 max-w-sm h-10 rounded-md bg-white"
+        >
+          <option value="All rooms">All rooms</option>
+          <option value="single">Single rooms</option>
+          <option value="double">Double rooms</option>
+        </select>
+        <select
+          name="roomAvailability"
+          id="roomAvailability"
+          onChange={handleRoomAvailabilityChange}
+          className="p-2 max-w-sm h-10 rounded-md bg-white "
+        >
+          <option value="All availability">All availability</option>
+          <option value="isAvailable">Available</option>
+          <option value="isNotAvailable">Not available</option>
+        </select>
+
         <button
           onClick={resetFilters}
-          className="bg-blue-500 text-white px-2 py-2 rounded-md mx-auto hover:bg-blue-700 "
+          className="bg-blue-500 max-w-sm text-white px-2 py-2 rounded-md hover:bg-blue-700 "
         >
           Reset Filters
         </button>
@@ -78,7 +90,8 @@ const RoomList = () => {
         {filteredRooms.map((room) => (
           <li
             key={room.id}
-            className="group mx-auto capitalize cursor-pointer "
+            className="group mx-auto capitalize cursor-pointer"
+            onClick={() => showBookingDetails(room)}
           >
             <div className="text-center">{room.price}Kr</div>
             {room.isAvailable ? (
@@ -99,6 +112,12 @@ const RoomList = () => {
           </li>
         ))}
       </ul>
+      {bookingDetails && (
+        <RoomDetails
+          room={bookingDetails}
+          hideBookingDetails={hideBookingDetails}
+        />
+      )}
     </div>
   );
 };
