@@ -33,18 +33,29 @@ const RoomDetails = ({ room, hideBookingDetails }) => {
             <strong>Category:</strong> {room.category}
           </p>
           <p>
-            <strong>Price:</strong> {room.price}Kr
+            <strong>Price:</strong> {room.price}Kr per day
           </p>
           <p>
             <strong>Availability:</strong>{" "}
             {room.isAvailable ? "Available" : "Not Available"}
           </p>
-          <Link
-            to={`/booking?booking=${encodeURIComponent(JSON.stringify(room))}`}
-            className="bg-blue-500 text-center text-white p-2 rounded-md mt-2 mb-2 w-36"
-          >
-            Book this room
-          </Link>
+          {room.isAvailable ? (
+            <Link
+              to={`/booking?booking=${encodeURIComponent(
+                JSON.stringify(room)
+              )}`}
+              className="bg-blue-500 text-center text-white p-2 rounded-md mt-2 mb-2 w-36"
+            >
+              Book this room
+            </Link>
+          ) : (
+            <div
+              className="bg-gray-400 text-center text-white p-2 rounded-md mt-2 mb-2 w-44 cursor-not-allowed"
+              aria-disabled="true"
+            >
+              Booking not available
+            </div>
+          )}
         </div>
         <div>
           <h3 className="text-lg font-bold mb-2">Bookings</h3>
