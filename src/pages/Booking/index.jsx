@@ -27,10 +27,6 @@ const Booking = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Booking Data:", {
-      room: booking,
-      customer: formData,
-    });
     setShowConfirmation(true);
   };
 
