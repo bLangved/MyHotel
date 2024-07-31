@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import useRooms from "../../../hooks/useRooms";
 import RoomDetails from "./RoomDetails";
 
 const RoomList = () => {
-  const { rooms, loading, error } = useRooms("/data/rooms.json");
+  const { rooms, fetchRooms, loading, error } = useRooms("/data/rooms.json");
   const [selectedRoomType, setSelectedRoomType] = useState("All rooms");
   const [selectedRoomAvailability, setSelectedRoomAvailability] =
     useState("All availability");
@@ -40,6 +40,17 @@ const RoomList = () => {
   const hideBookingDetails = () => {
     setBookingDetails(null);
   };
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    fetchRooms(signal).catch(e => console.error(e))
+
+    return () => {
+      controller.abort()
+    }
+  }, [fetchRooms])
 
   if (loading) {
     return <div>Loading...</div>;
