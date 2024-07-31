@@ -103,21 +103,12 @@ const RoomList = () => {
             onClick={() => showBookingDetails(room)}
           >
             <div className="text-center">{room.price}Kr</div>
-            {room.isAvailable ? (
               <>
-                <div className="bg-green-400 h-24 w-24 p-1 rounded-md justify-center flex flex-col items-center group-hover:border-4 border-solid border-white">
+                <div className={`${room.isAvailable ? 'bg-green-400' : 'bg-red-400'} h-24 w-24 p-1 rounded-md justify-center flex flex-col items-center group-hover:border-4 border-solid border-white`}>
                   <span>Room: {room.roomNumber}</span>
                   <span>{room.category}</span>
                 </div>
               </>
-            ) : (
-              <>
-                <div className="bg-red-400 h-24 w-24 p-1 rounded-md justify-center flex flex-col items-center group-hover:border-4 border-solid border-white">
-                  <span>Room: {room.roomNumber}</span>
-                  <span>{room.category}</span>
-                </div>
-              </>
-            )}
           </li>
         ))}
       </ul>
