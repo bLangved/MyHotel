@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import useRooms from "../../../hooks/useRooms";
 import RoomDetails from "./RoomDetails";
 
@@ -22,7 +22,7 @@ const RoomList = () => {
     setSelectedRoomAvailability("All availability");
   };
 
-  const filterRooms = () => {
+  const filteredRooms = useMemo(() => {
     return rooms.filter((room) => {
       const typeMatches =
         selectedRoomType === "All rooms" || room.category === selectedRoomType;
@@ -32,9 +32,7 @@ const RoomList = () => {
         (selectedRoomAvailability === "isNotAvailable" && !room.isAvailable);
       return typeMatches && availabilityMatches;
     });
-  };
-
-  const filteredRooms = filterRooms();
+  }, [rooms, selectedRoomType, selectedRoomAvailability]);
 
   const showBookingDetails = (roomData) => {
     setBookingDetails(roomData);
