@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const ConfirmationMessage = ({
   customer,
@@ -32,6 +33,14 @@ const ConfirmationMessage = ({
       </div>
     </div>
   );
+};
+
+ConfirmationMessage.propTypes = {
+  customer: PropTypes.string,
+  roomNumber: PropTypes.string,
+  startDate: PropTypes.string,
+  endDate: PropTypes.string,
+  totalPrice: PropTypes.number,
 };
 
 export default ConfirmationMessage;

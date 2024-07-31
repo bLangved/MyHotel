@@ -1,8 +1,25 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 
+/**
+ * 
+ * @param {{
+ *   room: {
+ *    roomNumber: number
+ *    category: string
+ *    price: number
+ *    isAvailable: boolean
+ *    bookings: {
+ *      customer: string
+ *      startDate: string
+ *      endDate: string
+ *    }[]
+ *  }
+ *  hideBookingDetails: () => void  
+ * }} props
+ * @returns 
+ */
 const RoomDetails = ({ room, hideBookingDetails }) => {
   if (!room) {
     return null;
