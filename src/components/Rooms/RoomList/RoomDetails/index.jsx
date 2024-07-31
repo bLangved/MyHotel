@@ -21,14 +21,15 @@ import { Link, useNavigate } from "react-router-dom";
  * @returns 
  */
 const RoomDetails = ({ room, hideBookingDetails }) => {
-  if (!room) {
-    return null;
-  }
   const navigate = useNavigate();
 
   const handleBookingClick = (roomData) => {
     navigate(`/booking?booking=${roomData}`);
   };
+
+  if (!room) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col sm:mt-10 p-3 border rounded-md z-10 fixed top-0 left-0 right-0 mx-auto bg-white max-w-4xl shadow sm:absolute h-full sm:h-64">

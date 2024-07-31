@@ -9,14 +9,6 @@ const RoomList = () => {
     useState("All availability");
   const [bookingDetails, setBookingDetails] = useState(null);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
   const handleRoomTypeChange = (e) => {
     setSelectedRoomType(e.target.value);
   };
@@ -50,6 +42,14 @@ const RoomList = () => {
   const hideBookingDetails = () => {
     setBookingDetails(null);
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="flex flex-col relative pb-3">
