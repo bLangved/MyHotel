@@ -1,17 +1,35 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 
+/**
+ * 
+ * @param {{
+ *   room: {
+ *    roomNumber: number
+ *    category: string
+ *    price: number
+ *    isAvailable: boolean
+ *    bookings: {
+ *      customer: string
+ *      startDate: string
+ *      endDate: string
+ *    }[]
+ *  }
+ *  hideBookingDetails: () => void  
+ * }} props
+ * @returns 
+ */
 const RoomDetails = ({ room, hideBookingDetails }) => {
-  if (!room) {
-    return null;
-  }
   const navigate = useNavigate();
 
   const handleBookingClick = (roomData) => {
     navigate(`/booking?booking=${roomData}`);
   };
+
+  if (!room) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col sm:mt-10 p-3 border rounded-md z-10 fixed top-0 left-0 right-0 mx-auto bg-white max-w-4xl shadow sm:absolute h-full sm:h-64">

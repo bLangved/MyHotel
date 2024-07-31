@@ -1,21 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import useRooms from "../../../hooks/useRooms";
 import RoomDetails from "./RoomDetails";
 
 const RoomList = () => {
-  const { rooms, loading, error } = useRooms("/data/rooms.json");
+  const { rooms, fetchRooms, loading, error } = useRooms("/data/rooms.json");
   const [selectedRoomType, setSelectedRoomType] = useState("All rooms");
   const [selectedRoomAvailability, setSelectedRoomAvailability] =
     useState("All availability");
   const [bookingDetails, setBookingDetails] = useState(null);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   const handleRoomTypeChange = (e) => {
     setSelectedRoomType(e.target.value);
@@ -30,7 +22,7 @@ const RoomList = () => {
     setSelectedRoomAvailability("All availability");
   };
 
-  const filterRooms = () => {
+  const filteredRooms = useMemo(() => {
     return rooms.filter((room) => {
       const typeMatches =
         selectedRoomType === "All rooms" || room.category === selectedRoomType;
@@ -40,9 +32,7 @@ const RoomList = () => {
         (selectedRoomAvailability === "isNotAvailable" && !room.isAvailable);
       return typeMatches && availabilityMatches;
     });
-  };
-
-  const filteredRooms = filterRooms();
+  }, [rooms, selectedRoomType, selectedRoomAvailability]);
 
   const showBookingDetails = (roomData) => {
     setBookingDetails(roomData);
@@ -50,6 +40,37 @@ const RoomList = () => {
   const hideBookingDetails = () => {
     setBookingDetails(null);
   };
+
+  const BookingDetails = () => {
+    if(!bookingDetails)
+      return (<></>)
+    
+    return (
+      <RoomDetails
+        room={bookingDetails}
+        hideBookingDetails={hideBookingDetails}
+      />
+    )
+  }
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    fetchRooms(signal).catch(e => console.error(e))
+
+    return () => {
+      controller.abort()
+    }
+  }, [fetchRooms])
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="flex flex-col relative pb-3">
@@ -94,30 +115,16 @@ const RoomList = () => {
             onClick={() => showBookingDetails(room)}
           >
             <div className="text-center">{room.price}Kr</div>
-            {room.isAvailable ? (
               <>
-                <div className="bg-green-400 h-24 w-24 p-1 rounded-md justify-center flex flex-col items-center group-hover:border-4 border-solid border-white">
+                <div className={`${room.isAvailable ? 'bg-green-400' : 'bg-red-400'} h-24 w-24 p-1 rounded-md justify-center flex flex-col items-center group-hover:border-4 border-solid border-white`}>
                   <span>Room: {room.roomNumber}</span>
                   <span>{room.category}</span>
                 </div>
               </>
-            ) : (
-              <>
-                <div className="bg-red-400 h-24 w-24 p-1 rounded-md justify-center flex flex-col items-center group-hover:border-4 border-solid border-white">
-                  <span>Room: {room.roomNumber}</span>
-                  <span>{room.category}</span>
-                </div>
-              </>
-            )}
           </li>
         ))}
       </ul>
-      {bookingDetails && (
-        <RoomDetails
-          room={bookingDetails}
-          hideBookingDetails={hideBookingDetails}
-        />
-      )}
+      <BookingDetails />
     </div>
   );
 };
