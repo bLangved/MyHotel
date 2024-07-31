@@ -41,6 +41,18 @@ const RoomList = () => {
     setBookingDetails(null);
   };
 
+  const BookingDetails = () => {
+    if(!bookingDetails)
+      return (<></>)
+    
+    return (
+      <RoomDetails
+        room={bookingDetails}
+        hideBookingDetails={hideBookingDetails}
+      />
+    )
+  }
+
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
@@ -112,12 +124,7 @@ const RoomList = () => {
           </li>
         ))}
       </ul>
-      {bookingDetails && (
-        <RoomDetails
-          room={bookingDetails}
-          hideBookingDetails={hideBookingDetails}
-        />
-      )}
+      <BookingDetails />
     </div>
   );
 };
